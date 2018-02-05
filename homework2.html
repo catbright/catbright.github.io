@@ -31,10 +31,14 @@
 <script>
 
   function myGreeting(hour) {
-    if (hour < 12) {
+    if (hour >= 0) {
       document.getElementById("words").innerHTML = "Good Morning!";
     }
-    else {
+
+    if (hour >= 12) {
+      document.getElementById("words").innerHTML = "Good Afternoon!";
+    }
+    if (hour >= 17) {
       document.getElementById("words").innerHTML = "Good Evening!";
     }
 
