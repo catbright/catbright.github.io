@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Cambridge Public Art Test
+    </title>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <style>
+
+
+        h1 {
+          color: white;
+          padding:0px;
+        }
+
+        p {
+          margin: 100px;
+        }
+
+
+      </style>
+
+      <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Mukta+Mahee">
+      <style>
+        body {
+          font-family: 'Mukta Mahee', sans-serif;
+          font-size: 24px;
+          text-align: center;
+        }
+      </style>
+
+    <style>
+      body{
+        margin: 0;
+      }
+
+      #tooltip {
+        background-color: white;
+        border: 1px solid black;
+        display: none;
+        font-family: 'Mukta Mahee', sans-serif;
+        font-size: 12px;
+        position: absolute;
+        }
+
+    </style>
+
+    <body bgcolor="#8000ff">
+
+    <h1>Public Art in Cambridge, MA</h1>
+
+    <h2></h2>
+
+
+</head>
+
+<body id="myBody">
+
+  <p>"It becomes more apparent each day that we must continuously rejuvenate and generate the arts at the core of society, to ensure a healthy, sustainable, secure, diverse and meaningful civilization."<br>
+    - Professor Nathan Felde<br>
+     Art + Design, Northeastern University</p>
+
+<svg id="viz">
+  <g id="xAxis"></g>
+
+</svg>
+
+<div id="tooltip"></div>
+
+
+</body>
+
+
+<script>
+
+d3.queue()
+  .defer(d3.csv, "ArtDataset2.csv")
+  .awaitAll(function(error, dataArray) {
+    var artData = dataArray[0];
+    artData.forEach(function(Year){
+      Year = parseFloat(Year)
+    });
+    console.log(artData);
+
+
+var padding = 100;
+
+var minYear = d3.min(artData, function(d){
+  return d.Year;
+});
+
+var maxYear = d3.max(artData, function(d) {
+  return d.Year;
+});
+
+var xScale = d3.scaleLinear()
+.domain([minYear, maxYear])
+.range([padding, window.innerWidth - padding * 2]);
+
+var svg = d3.select("#viz")
+  .attr("width", window.innerWidth)
+  .attr("height", window.innerHeight);
+
+var circles = svg.selectAll("circle")
+  .data(artData);
+
+  circles.enter().append("circle")
+    .attr("cx", padding)
+    .attr("cy", 150)
+    .attr("r", 10)
+    .on("mouseenter", function(d) {
+      d3.select("#tooltip")
+      .style("display", "block")
+      .style("top", "590px")
+      .style("left", xScale(d.Year) + "px")
+      .text(d.Title);
+    })
+    .on("mouseleave", function(d) {
+      d3.select("#tooltip")
+        .style("display", "none");
+    })
+    .transition().duration(1500)
+      .attr("cx", function(d){
+        return xScale(d.Year);
+      });
+
+  var xAxis = d3.axisBottom(xScale);
+    d3.select("g#xAxis")
+    .attr("transform", "translate(0, 200)")
+    .call(xAxis);
+  });
+
+  </script>
+</body>
+
+</html>
