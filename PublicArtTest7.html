@@ -15,12 +15,12 @@
           font-family: 'Mukta Mahee', sans-serif;
           font-size: 100px;
           text-align: center;
-        }
+          }
 
         p {
           font-size: 24px;
           margin: 100px;
-        }
+          }
       </style>
 
     <style>
@@ -35,8 +35,6 @@
         }
     </style>
 
-
-<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
 body, html {
@@ -78,11 +76,9 @@ body, html {
   font-size: 75px;
 }
 </style>
-
 </head>
 
 <body bgcolor="#ffffff">
-
 
 <body>
 
@@ -123,9 +119,14 @@ d3.queue()
     });
     console.log(artData);
 
+    var margin = {top: 50, right: 50, bottom: 50, left: 50},
+            width = window.innerWidth,
+            height = window.innerHeight,
 
-var padding = 100
-  numberOfNodes = 93;
+            padding = 50,
+            maxRadius = 30,
+            minRadius = 10,
+            numberOfNodes = 93;
 
 var minYear = d3.min(artData, function(d){
   return d.Year;
@@ -140,12 +141,34 @@ var xScale = d3.scaleLinear()
 .domain([minYear, maxYear])
 .range([padding, window.innerWidth - padding * 2]);
 
+var xAxis = d3.axisBottom(xScale);
 
 var svg = d3.select("#viz")
   .attr("width", window.innerWidth)
   .attr("height", window.innerHeight)
-  .attr("shape-rendering", "geometric-precision");
 
+  var nodes = artData.map(function(node, index) {
+        return {
+          index: index,
+          Year: node.Year,
+          MaterialNum: node.MaterialNum,
+          xScale: xScale(node.Year),
+          fxScale: xScale(node.Year),
+        };
+      });
+
+  var sizeScale = d3.scaleLinear()
+      .domain([d3.min(artData, function(d){ return d.MaterialNum;}), d3.max(artData,  function(d){ return d.MaterialNum;})])
+      .range([minRadius,maxRadius]);
+
+      var simulation = d3.forceSimulation(nodes)
+              .force("xScale", d3.forceX(function(d) {return xScale(d.Year); }).strength(1))
+              .force("y", d3.forceY(250))
+              .force("collide", d3.forceCollide().radius(function(d){ return sizeScale(d.MaterialNum) + padding }))
+              .force("manyBody", d3.forceManyBody().strength(-10))
+              .stop();
+
+            for (var i = 0; i < 150; ++i) simulation.tick();
 
 var circles = svg.selectAll("circle")
   .data(artData);
@@ -158,7 +181,7 @@ var circles = svg.selectAll("circle")
     .style("fill", function(d) { return colorScale(d.Year); })
     .attr("cx", padding)
     .attr("cy", 150)
-    .attr("r", 10)
+    .attr("r", function(d) { return sizeScale(d.MaterialNum); })
     .on("mouseenter", function(d) {
       d3.select("#tooltip")
       .style("display", "block")

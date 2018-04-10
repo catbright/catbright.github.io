@@ -1,0 +1,94 @@
+Last Name ,First Name,Artist Gender,Title,Year,InteriorExterior ,Category,CategoryNum,Object Type,Material,MaterialNum
+Speiser,Ken,Male ,"""Hearth""",2007,Exterior ,Scuplture ,3,"Brick, steel ",Brick and steel ,2
+Phillips,David,Male ,"""Beach Fragments""",1986,Exterior ,Sculpture ,3,Bronze,"Silicon bronze, brick ",2
+Phillips,David,Male ,"""Spiral""",1997,Exterior ,Sculpture ,3,Bronze,Bronze,1
+McKie,Judy ,Female ,"""Alley Cats""",2005,Exterior ,Sculpture ,3,Bronze ,Silicon bronze ,1
+Evans,Laura,Female   ,"""Altered Benches""",2007,Exterior ,Sculpture ,3,Bronze ,Bronze ,1
+Phillips,David,Male ,"""Stone Work""",1980,Exterior ,Sculpture ,3,Bronze ,"Bronze, granite ",2
+Cauthen,Gene,Male ,"""Park Bench Group""",1985,Exterior ,Sculpture ,3,Bronze ,Bronze ,1
+Cauthen,Gene,Male ,"""Pole Climbers""",1986,Exterior ,Sculpture ,3,Bronze ,Bronze ,1
+Tyler,James,Male ,"""Tower of East Cambridge Faces""",1986,Exterior ,Sculpture ,3,Bronze ,Bronze ,1
+Cauthen,Gene,Male ,"""Trellis""",1986,Exterior ,Sculpture ,3,Bronze ,Bronze ,1
+Cauthen,Gene,Male ,"""Workers""",1986,Exterior ,Sculpture ,3,Bronze ,Bronze ,1
+Dewart,Murray,Male ,"""The Late Flower Alphabet""",2003,Exterior ,Sculpture,3,Bronze ,Bronze ,1
+Phillips,David,Male ,"""Levitated Stone""",2004,Exterior ,Sculpture ,3,Bronze ,Bronze,1
+Schelling,Robert,Male ,"""Gore Field""",2006,Exterior ,Sculpture ,3,Bronze ,Bronze ,1
+Baring-Gould,Laura,Female ,"""Water For All"" (community garden)",2013,Exterior,Sculpture,3,Bronze Fountain,Bronze,1
+Baring-Gould,Laura,Female ,"""Water For All"" (pathway)",2013,Exterior,Sculpture,3,Bronze Fountain,Bronze,1
+Simun,Konstantin,Male ,"""Fokin Memorial""",2001,Exterior ,Sculpture ,3,Bronze-Gilded,Bronze ,1
+Shores,Robin,Female,Untitled (bollard with crossed arms figure),1981,Exterior ,Sculpture ,3,Concrete ,Concrete ,1
+Ukeles,Mierle,Female,"""Turnaround/Surround""",2001,Exterior ,Sculpture ,3,Concrete ,Concrete ,1
+Goldman,Jane,Female,"""Patchwork Oasis""",2001,Exterior ,Sculpture ,3,Concrete ,Concrete pavers ,1
+Tagiuri,John,Male ,"""Chairs and Endless Lamps""",2002,Exterior ,Sculpture ,3,"Concrete, Metal","Concrete, Metal ",2
+Wodiczko,Krzysztof,Male ,Illumination Project for the Robert W. Healy Public Saftey Facility,2009,Exterior ,Electronic media ,1,Digital-Lighting installation ,"LED Lights, Metal, Computer Software",3
+Oatman,Michael,Male ,"""The Cantabrigians""",2009,Interior ,Electronic Media ,1,Digital-Moving Image,3 LCD monitors and a Mac Mini,2
+Fair,Tory,Female ,"""Hopscotch""",2007,Exterior ,Sculpture ,3,"Foam, fiberglass ","Foam, fiberglass",2
+Conley,Alston,Male ,"""Room of Maps""",1983,Interior ,Mural,2,Fresco ,Fresco ,1
+Judelson,David,Male ,"""Brickworker and Ballplayer""",1983,Exterior ,Sculpture ,3,Masonary ,Handmade brick ,1
+Beer,Vivian,Female,"""Thunderhead""",2012,Exterior,Sculpture,3,Metal,Steel,1
+Gunther,Virgina,Female ,"""Flag Gate""",1997,Exterior ,Sculpture ,3,Metal,Steel,1
+Slosberg-Ackerman,Jill,Female,"""Rei""",2004,Exterior ,Sculpture ,3,Metal ,Steel ,1
+Selvage,Nancy,Female ,"""Water Wall""",2007,Exterior ,Sculpture ,3,Metal ,Steel,1
+Powell,John,Male ,"""Dana Park Quotes""",2007,Exterior ,Sculpture ,3,Metal ,Aluminum ,1
+Uchida,Bart,Male ,"""Rose Arbor""",2004,Exterior ,Sculpture ,3,Metal  ,Steel,1
+Wainwright,William,Male ,"""Never Green Tree""",1987,Exterior ,Sculpture ,3,Metal-Mixed Media,"Steel, aluminum, mylar ",3
+Gillick,Liam,Male ,"""The Librarian Speaks""",2009,Exterior ,Sculpture,3,Metal-Painted Aluminium,Painted Aluminium,2
+Zeigler,Mel,Male ,"""Taking Note""",2013,Interior,Scuplture,3,Metal-Painted Aluminum,Painted Aluminum,2
+Coogan,Jay,Male ,"""Stop-Action-Frieze""",1997,Interior ,Sculpture ,3,Metal-Painted Aluminum,Painted Aluminum,2
+Lord,Madeleine,Female,"""Revolutionary Figures""",1987,Exterior ,Sculpture ,3,Metal-Painted Steel,Cut and painted steel ,2
+Bell,Roberley,Female,"""Here and There""",2008,Exterior ,Sculpture ,3,Metal-Painted Steel,Paint on steel,2
+Boyajian,Gail,Female ,"""Otter Fence""",2001,Exterior ,Sculpture ,3,Metal-Painted Steel,Painted steel,2
+Hamrol,Lloyd,Male ,"""Gate House""",1986,Exterior ,Sculpture ,3,Metal-Painted Steel,Enamel on steel ,2
+Greenamyer,George,Male ,"""East Cambridge - 1852""",1988,Exterior ,Sculpture ,3,Metal-Painted Steel,Steel ,1
+Gerakaris,Dimitri,Male ,"""Centanni Way Garden Sculpture""",1989,Exterior ,Sculpture ,3,Metal-Painted Wrought Iron,Paint and wrought iron,2
+Galston,Beth,Female ,"""Shadow Walk"" (formerly ""Sun Arc"")",1984,Exterior ,Sculpture ,3,Metal-Steel,Steel ,1
+Pinto,Jody,Female,"""New Palmer""",2008,Exterior ,Sculpture ,3,Mixed media,"Fiberglass, concrete, steel ",3
+Louden,Sharon ,Female ,"""Plantings on the Charles""",2009,Exterior ,Sculpture,3,Mixed media,Steel Wire and Reflectors,2
+Maduna,Vusumuzi,Male ,"""Inner City Totem I""",1981,Exterior ,Sculpture ,3,Mixed media,"Steel, wood ",2
+Hsu,Lillian,Female ,"""Sitting Coves""",2001,Interior ,Sculpture ,3,Mixed media,"Wood, paint, glass block",3
+Driscoll,Ellen,Female ,"""Filament/Firmament""",2010,Interior ,Sculpture ,3,Mixed media,"Etched glass, zinc panels, textile, imagery ",4
+Beatty,Michael,Male ,"""Spectrum""",2001,Interior ,Sculpture ,3,Mixed media,"Wood, steel ",2
+Taho,Ritsuko,Female  ,"""Multicultural Manifestoes""",1997,Exterior ,Sculpture ,3,Mixed media ,"Glass, brick, brass, granite ",4
+Maduna,Vusumuzi,Male ,"""Inner City Totem II""",1983,Exterior ,Sculpture ,3,Mixed media ,"Steel, wood ",2
+Maduna,Vusumuzi,Male ,"""Dr. Martin Luther King, Jr. Memorial""",1971,Interior ,Sculpture ,3,Mixed media ,"Plastic, painted metal, metal mesh ",3
+Davis,Taylor,Female ,"""Bus Shelter""",2006,Exterior ,Sculpture,3,Mixed media  ,"Glass, wood, aluminum",3
+Andrews,Edwin,Male ,"""Dot Matrix""",2004,Exterior ,Sculpture ,3,Mixed media  ,"Aluminum, Plexiglas",2
+Jonas ,"Paul, Ramirez",Male ,"""Taylor Square""",2005,Exterior ,Sculpture ,3,Mixed media installation,"Painted Metal, Stone",2
+Mandel,Mike,Male ,"""Sidewalk Histories""",2010,Exterior ,Sculpture ,3,Mosaic-Ceramic Tiles inSidewalk,Ceramic tiles in sidewalk,2
+Whitman,Heidi,Female,"""Brain Terrain""",2008,Exterior ,Sculpture ,3,Mosaic-Glass Tiles ,Glass tiles ,1
+Rosenberg,Lilli Ann,Female ,"""Celebrating the Marshland""",1982,Exterior ,Sculpture ,3,"Mosaic-Mixed Media, Ceramic Tiles ","Shells, glass, mortar",3
+Rosenberg,Lilli Ann,Female ,"""Tribute to Martin Luther King, Jr.""",1985,Exterior ,Sculpture ,3,"Mosaic-Mixed Media, Ceramic Tiles ","Ceramic tiles, Mixed Media",2
+Rosenberg,Lilli Ann,Female ,"""Turtles""",1989,Exterior ,Sculpture ,3,"Mosaic-Mixed Media, Concrete ","Mixed Media, Concrete, Granite ",3
+McKie,Todd,Male ,"""C'mon In The Water's Fine!""",2006,Exterior,Mural,2,Painting,Acrylic on concrete ,2
+Simonds,Nancy,Female,"""Beacon of Color""",2011,Exterior ,Mural,2,Painting,Acrylic on Sintra,2
+Eddy,Ellery,Female ,"""Engine Company No. 5""",1976,Exterior ,Mural ,2,Painting,Paint on brick,2
+Lyman ,Mela,Female ,"""Anxiety of Beauty: Revisiting the Fountian of Youth Mural""",2009,Exterior ,Mural ,2,Painting,Acrylic paint on MDO board,2
+LaCasse,Bernard,Male ,"""Beat the Belt""",1980,Exterior ,Mural ,2,Painting ,Acrylic on masonry ,2
+Galvez,Daniel,Male ,"""Crossroads""",1986,Exterior ,Mural,2,Painting ,Acrylic enamel on concrete ,2
+Turre,Michele,Female,"""Cambridge and its Watershed""",1983,Interior ,Mural,2,Painting ,Acrylic on masonite ,2
+Houck,Lisa,Female,"""They Settled Near a Marsh""",1995,Interior ,Mural,2,Painting ,Oil enamel on plywood ,2
+Houck,Lisa,Female,"""One Seasonal Cycle in a Temperate Zone""",1995,Interior ,Mural ,2,Painting ,Oil enamel on plywood ,2
+Houck,Lisa,Female,"""This is Where We Saw the Eclipse""",1995,Interior ,Mural ,2,Painting ,Oil enamel on plywood ,2
+Arai,Tomie,Female,Morse School Mural,1999,Interior ,Mural ,2,Painting ,Acrylic on birch,2
+Houck,Lisa,Female,"""The Bluefish is good tonight""",1987,Interior ,Mural,2,Painting-Acrylic on Aluminum Panels,Enamel paint on aluminum,2
+Glier,Michael,Male ,"""Town Green""",2004,Interior ,Mural ,2,Painting ,Acrylic on sheetrock ,2
+Hurley,Arnold,Male ,"""Project Adventure""",1983,Interior ,Mural,2,Painting ,Acrylic on masonite ,2
+Fichter,David,Male ,"""Education is Liberation: Rosa Parks""",1985,Interior ,Mural,2,Painting ,Acrylic on brick ,2
+Fichter,David,Male ,"""Cambridge Senior Center Mural""",1986,Interior ,Mural,2,Painting ,Acrylic on concrete ,2
+Lichtman,Linda,Female ,Untitled,1980,Interior,Sculpture,3,Stained glass,Glass ,1
+Lichtman,Linda,Female ,"""Landscape Frieze in Glass""",1990,Interior,Sculpture ,3,Stained glass,Stained glass,1
+Basa,Lynn,Female,"""A Long Story""",2013,Interior,Sculpture,3,"Stained glass, mixed media","Stained glass, mixed media",2
+Dorrien,Carlos,Male ,"""Alewife Portals""",1997,Exterior ,Sculpture ,3,Stone,Granite ,1
+Dorrien,Carlos,Male ,"""Quiet Cornerstone""",1986,Exterior ,Sculpture ,3,Stone ,Granite ,1
+Katayama,Toshihiro,Male ,"""Porter Square Landscape Design""",2006,Exterior ,Sculpture ,3,Stone ,Boulders ,1
+Levine,Edward,Male,"""Floating Stones""",1992,Exterior ,Sculpture ,3,Stone and metal ,Granite and steel ,2
+Von Huene,Andreas,Male ,"""Salmones Salari"" (The Great Leaper)",2004,Exterior ,Sculpture ,3,Stone Fountain,Granite ,1
+Inglese,Judith,Female ,"""I'd Hammer Out Love""",1984,Exterior ,Sculpture,3,Tiles-Ceramic,Ceramic ,1
+Judelson,David,Male ,"""Flag Fragments""",1987,Exterior ,Sculpture,3,Tiles-Ceramic,Clay,1
+Thurston,Randal,Male ,"""Yerxa Road Underpass"" (ceramic tiles)",2006,Exterior ,Sculpture ,3,Tiles-Ceramic,Ceramic tiles,1
+Gregory,Jack,Male ,"""Children's Collaborative Mural""",1983,Interior,Sculpture,3,Tiles-Ceramic,Clay,1
+Inglese,Judith,Female ,"""Play is Child's Work""",1983,Interior ,Sculpture,3,Tiles-Ceramic,Ceramic ,1
+Kepes,Gyorgy,Male,"""Geometric Pattern""",1957,Interior ,Sculpture ,3,Tiles-Ceramic,Ceramic tile,1
+Houck,Lisa,Female,"""Scientific Observations of the Square""",1995,Interior ,Sculpture,3,Tiles-Terra Cotta ,Terra cotta tiles ,1
+Harries,Mags,Female ,"""Gateway""",1983,Interior ,Sculpture ,3,Wood-Painted,"Wood, enamel, lights ",3
+Ryerson,Mitch,Male,"""Front Desk""",1988,Interior ,Sculpture ,3,Wood-Painted,"Birch, cherry and maple wood ",3

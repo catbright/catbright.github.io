@@ -33,6 +33,11 @@
         font-color: white;
         position: absolute;
         }
+
+      #xAxis {
+        font-family: 'Mukta Mahee', sans-serif;
+        font-size: 15px;
+      }
     </style>
 
 
@@ -70,7 +75,7 @@ body, html {
 .caption2 {
   position: relative;
   left: 0;
-  top: 10%;
+  top: 0%;
   width: 100%;
   text-align: center;
   color: #ffffff;
@@ -112,9 +117,11 @@ body, html {
 var axis1 = 'Year';
 
 d3.queue()
-  .defer(d3.csv, "ArtDataset2Edit.csv")
+  .defer(d3.csv, "ArtDataset3Edit.csv")
   .awaitAll(function(error, dataArray) {
-    var artData = dataArray[0];
+    var artData = dataArray[0].sort(function(a, b) {
+      return a.Year - b.Year;
+    });
     artData.forEach(function(Year){
       Year = parseFloat(Year)
     artData.forEach(function(d) {
@@ -123,9 +130,15 @@ d3.queue()
     });
     console.log(artData);
 
+    var margin = {top: 50, right: 50, bottom: 50, left: 50},
+        width = window.innerWidth,
+        height = window.innerHeight,
 
-var padding = 100
-  numberOfNodes = 93;
+        padding = 75,
+        maxRadius = 20,
+        minRadius = 5,
+        numberOfNodes = 93;
+
 
 var minYear = d3.min(artData, function(d){
   return d.Year;
@@ -144,7 +157,20 @@ var xScale = d3.scaleLinear()
 var svg = d3.select("#viz")
   .attr("width", window.innerWidth)
   .attr("height", window.innerHeight)
-  .attr("shape-rendering", "geometric-precision");
+
+  var nodes = artData.map(function(node, index) {
+      return {
+        index: index,
+        Year: node.Year,
+        MaterialNum: node.MaterialNum,
+        xScale: xScale(node.Year),
+        fxScale: xScale(node.Year),
+      };
+    });
+
+    var sizeScale = d3.scaleLinear()
+      .domain([d3.min(artData, function(d){ return d.MaterialNum;}), d3.max(artData,  function(d){ return d.MaterialNum;})])
+      .range([minRadius,maxRadius]);
 
 
 var circles = svg.selectAll("circle")
@@ -157,8 +183,14 @@ var circles = svg.selectAll("circle")
   circles.enter().append("circle")
     .style("fill", function(d) { return colorScale(d.Year); })
     .attr("cx", padding)
-    .attr("cy", 150)
-    .attr("r", 10)
+    .attr("cy", function(d, i) {
+      var myYearsData = artData.filter(function(a) {
+        return a.Year == d.Year;
+      });
+      var myIndex = myYearsData.indexOf(d);
+      return 475 - 50 * myIndex;
+    })
+    .attr("r", function(d) { return sizeScale(d.MaterialNum)} )
     .on("mouseenter", function(d) {
       d3.select("#tooltip")
       .style("display", "block")
@@ -178,7 +210,7 @@ var circles = svg.selectAll("circle")
 
   var xAxis = d3.axisBottom(xScale);
     d3.select("g#xAxis")
-    .attr("transform", "translate(0, 200)")
+    .attr("transform", "translate(0, 500)")
     .call(d3.axisBottom(xScale)
     .tickFormat(d3.format("")));
   });
