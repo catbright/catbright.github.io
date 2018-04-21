@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Cambridge Public Art Test
+    </title>
+
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Mukta+Mahee">
+      <style>
+        body {
+          font-family: 'Mukta Mahee', sans-serif;
+          font-size: 100px;
+          text-align: center;
+        }
+
+        p {
+          font-size: 24px;
+          margin: 100px;
+        }
+      </style>
+
+    <style>
+      #tooltip {
+        background-color: #999999;
+        border: none;
+        display: none;
+        font-family: 'Mukta Mahee', sans-serif;
+        font-size: 12px;
+        font-color: white;
+        position: absolute;
+        }
+
+      #xAxis {
+        font-family: 'Mukta Mahee', sans-serif;
+        font-size: 15px;
+      }
+    </style>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Mukta Mahee', sans-serif;
+    font-color: #ffffff;
+    }
+
+.bg {
+    background-image: url("IMG_6806.JPG");
+    height: 50%;
+    opacity: 0.85;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+
+.caption1 {
+  position: relative;
+  left: 0;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  padding: 10px;
+  font-size: 100px;
+  font-variant: small-caps;
+  }
+
+.caption2 {
+  position: relative;
+  left: 0;
+  top: 0%;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  padding: 10px;
+  font-size: 75px;
+}
+</style>
+
+</head>
+
+<body bgcolor="#ffffff">
+
+
+<body>
+
+<div class="bg">
+  <div class="caption1">Public Art</div>
+  <div class="caption2">Cambridge, MA</div>
+</div>
+
+
+<body id="myBody">
+
+  <p>"It becomes more apparent each day that we must continuously rejuvenate and generate the arts at the core of society, to ensure a healthy, sustainable, secure, diverse and meaningful civilization."<br>
+    - Professor Nathan Felde<br>
+     Art + Design, Northeastern University</p>
+
+<svg id="viz">
+  <g id="xAxis"></g>
+</svg>
+
+<div id="tooltip"></div>
+
+</body>
+
+
+<script>
+
+var axis1 = 'Year';
+
+d3.queue()
+  .defer(d3.csv, "ArtDataset3Edit.csv")
+  .awaitAll(function(error, dataArray) {
+    var artData = dataArray[0].sort(function(a, b) {
+      return a.Year - b.Year;
+    });
+    artData.forEach(function(Year){
+      Year = parseFloat(Year)
+    artData.forEach(function(d) {
+      d[axis1] = +d[axis1]
+      })
+    });
+    console.log(artData);
+
+    var margin = {top: 50, right: 50, bottom: 50, left: 50},
+        width = window.innerWidth,
+        height = window.innerHeight,
+
+        padding = 75,
+        maxRadius = 20,
+        minRadius = 5,
+        numberOfNodes = 93;
+
+
+var minYear = d3.min(artData, function(d){
+  return d.Year;
+});
+
+var maxYear = d3.max(artData, function(d) {
+  return d.Year;
+});
+
+
+var xScale = d3.scaleLinear()
+.domain([minYear, maxYear])
+.range([padding, window.innerWidth - padding * 2]);
+
+
+var svg = d3.select("#viz")
+  .attr("width", window.innerWidth)
+  .attr("height", window.innerHeight)
+
+  var nodes = artData.map(function(node, index) {
+      return {
+        index: index,
+        Year: node.Year,
+        MaterialNum: node.MaterialNum,
+        xScale: xScale(node.Year),
+        fxScale: xScale(node.Year),
+      };
+    });
+
+    var sizeScale = d3.scaleLinear()
+      .domain([d3.min(artData, function(d){ return d.MaterialNum;}), d3.max(artData,  function(d){ return d.MaterialNum;})])
+      .range([minRadius,maxRadius]);
+
+
+var circles = svg.selectAll("circle")
+  .data(artData);
+
+  var colorScale = d3.scaleSequential(d3.interpolateRainbow)
+    .domain( [d3.min(artData, function(d){ return d.Year;}), d3.max(artData,  function(d){ return d.Year;})] );
+
+
+  circles.enter().append("circle")
+    .style("fill", function(d) { return colorScale(d.Year); })
+    .attr("cx", padding)
+    .attr("cy", function(d, i) {
+      var myYearsData = artData.filter(function(a) {
+        return a.Year == d.Year;
+      });
+      var myIndex = myYearsData.indexOf(d);
+      return 475 - 50 * myIndex;
+    })
+    .attr("r", function(d) { return sizeScale(d.MaterialNum)} )
+    .on("mouseenter", function(d) {
+      d3.select("#tooltip")
+      .style("display", "block")
+      .style("top", "860px")
+      .style("left", xScale(d.Year) + "px")
+      .text(d.Title);
+    })
+    .on("mouseleave", function(d) {
+      d3.select("#tooltip")
+        .style("display", "none");
+    })
+    .transition().duration(1500)
+      .attr("cx", function(d){
+        return xScale(d.Year);
+      });
+
+
+  var xAxis = d3.axisBottom(xScale);
+    d3.select("g#xAxis")
+    .attr("transform", "translate(0, 500)")
+    .call(d3.axisBottom(xScale)
+    .tickFormat(d3.format("")));
+  });
+
+
+
+  </script>
+</body>
+
+</html>
