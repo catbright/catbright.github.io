@@ -69,7 +69,7 @@ var axis1 = 'Year';
 
 
 d3.queue()
-  .defer(d3.csv, "ArtDataset3Edit.csv")
+  .defer(d3.csv, "ArtDataset4Edit.csv")
   .awaitAll(function(error, dataArray) {
     var artData = dataArray[0].sort(function(a, b) {
       return a.Year - b.Year;
@@ -129,11 +129,11 @@ var circles = svg.selectAll("circle")
   .data(artData);
 
 var colorScale = d3.scaleSequential(d3.interpolateRainbow)
-    .domain( [d3.min(artData, function(d){ return d.Year;}), d3.max(artData,  function(d){ return d.Year;})] );
+    .domain( [d3.min(artData, function(d){ return d.NeighborhoodNum;}), d3.max(artData,  function(d){ return d.NeighborhoodNum;})] );
 
 
   circles.enter().append("circle")
-    .style("fill", function(d) { return colorScale(d.Year); })
+    .style("fill", function(d) { return colorScale(d.NeighborhoodNum); })
     .attr("r", 0)
     .attr("cx", padding)
     .attr("cy", function(d, i) {
