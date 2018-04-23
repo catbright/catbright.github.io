@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
       <title>
-        Public Art, Cambridge MA
+        Public Art, City of Cambridge
       </title>
 
   <script src="https://d3js.org/d3.v4.min.js"></script>
@@ -37,8 +37,8 @@
 
 <!--title text-->
 <div class="bg">
-  <h2><span class='spacer'>Public Art<span class='spacer'></h2></span>
-  <h3><span class='spacer'>City of Cambridge</span class='spacer'></h3></span>
+  <h2><span class='spacer'>A Sense of Place<span class='spacer'></h2></span>
+  <h3><span class='spacer'>Public Art in Cambridge, MA</span class='spacer'></h3></span>
 </div>
 
 <h4><span><i>The Librarian Speaks</i> - Liam Gillick, 2009</h4></span>
@@ -48,13 +48,18 @@
 
 
 <!--Intro quote-->
-  <p>"It becomes more apparent each day that we must continuously rejuvenate and generate the arts at the core of society, to ensure a healthy, sustainable, secure, diverse and meaningful civilization."<br>
+  <p>"It becomes more apparent each day that we must continuously rejuvenate and
+    generate the arts at the core of society, to ensure a healthy, sustainable,
+    secure, diverse and meaningful civilization."<br>
     - Professor Nathan Felde<br>
      Art + Design, Northeastern University</p>
 
-  <p>Since 1979, the city of Cambridge has funded public art projects
-      through the Percent for Art Ordinance.<br>The projects below are coded
-      by neighborhood and number of materials used.</p>
+  <p>The city of Cambridge has commissioned
+      nearly 100 public art installations between 1957 and 2013, creating a sense
+      of place in ten neighborhoods.  Ranging from sculptures and murals to
+      electronic media installations these pieces represent the work of 73 artists.
+      Since 1979, the city has funded public art projects through a Percent for Art
+      Ordinance.</p>
 
 <svg id="viz">
   <g id="xAxis"></g>
@@ -113,6 +118,7 @@ var svg = d3.select("#viz")
   .attr("width", window.innerWidth)
   .attr("height", window.innerHeight)
 
+//tooltip style
   var tooltip = d3.select("body")
       .append("div")
       .style("position", "absolute")
@@ -140,12 +146,12 @@ var svg = d3.select("#viz")
       };
     });
 
-    var sizeScale = d3.scaleLinear()
+//Circles
+  var sizeScale = d3.scaleLinear()
       .domain([d3.min(artData, function(d){ return d.MaterialNum;}), d3.max(artData,  function(d){ return d.MaterialNum;})])
       .range([minRadius,maxRadius]);
 
 
-//Circles
 var circles = svg.selectAll("circle")
   .data(artData);
 
@@ -175,7 +181,7 @@ var colorScale = d3.scaleSequential(d3.interpolateRainbow)
     .duration(1500)
     .attr("r", function(d) { return sizeScale(d.MaterialNum)} )
 
-
+//x axis
   var xAxis = d3.axisBottom(xScale);
     d3.select("g#xAxis")
     .attr("transform", "translate(0, 500)")
