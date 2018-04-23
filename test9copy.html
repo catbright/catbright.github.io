@@ -33,6 +33,17 @@
       background-size: cover;
       position: relative;
       }
+
+      #tooltip {
+        background-color: #999999;
+        border: none;
+        display: none;
+        font-family: 'Mukta Mahee', sans-serif;
+        font-size: 25px;
+        color: white;
+        position: absolute;
+        }
+
   </style>
 
 <!--title text-->
@@ -52,9 +63,6 @@
     - Professor Nathan Felde<br>
      Art + Design, Northeastern University</p>
 
-  <p>Since 1979, the city of Cambridge has funded public art projects
-      through the Percent for Art Ordinance.<br>The projects below are coded
-      by neighborhood and number of materials used.</p>
 
 <svg id="viz">
   <g id="xAxis"></g>
@@ -113,23 +121,6 @@ var svg = d3.select("#viz")
   .attr("width", window.innerWidth)
   .attr("height", window.innerHeight)
 
-  var tooltip = d3.select("body")
-      .append("div")
-      .style("position", "absolute")
-      .style("z-index", "10")
-      .style("visibility", "hidden")
-      .style("background", "#303030")
-      .style("opacity", 0.9)
-      .style("color", "white")
-      .style("padding", "5px 0")
-      .style("border-radius", "6px");
-
-      d3.select("body")
-        .selectAll("div")
-          .data(artData)
-        .enter().append("div");
-
-
   var nodes = artData.map(function(node, index) {
       return {
         index: index,
@@ -168,13 +159,20 @@ var colorScale = d3.scaleSequential(d3.interpolateRainbow)
     .attr("cx", function(d){
         return xScale(d.Year);
       })
-      .on("mouseover", function(d){tooltip.text(d.Title); return tooltip.style("visibility", "visible");})
-      .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
-      .on("mouseout", function(){return tooltip.style("visibility", "hidden");})
+    .on("mouseenter", function(d) {
+      d3.select("#tooltip")
+      .style("display", "block")
+      .style("top", "1100px")
+      .style("left", xScale(d.Year) + "px")
+      .text(d.Title);
+    })
+    .on("mouseleave", function(d) {
+      d3.select("#tooltip")
+        .style("display", "none");
+    })
     .transition("r")
     .duration(1500)
     .attr("r", function(d) { return sizeScale(d.MaterialNum)} )
-
 
 
   var xAxis = d3.axisBottom(xScale);
@@ -184,6 +182,25 @@ var colorScale = d3.scaleSequential(d3.interpolateRainbow)
     .tickFormat(d3.format("")));
   });
 
+var artData;
+
+// Legend
+  var sequentialScale = d3.scaleSequential(d3.interpolateRainbow)
+    .domain( [d3.min(artData, function(d){ return d.NeighborhoodNum;}), d3.max(artData,  function(d){ return d.NeighborhoodNum;})] );
+  var svg = d3.select("svg");
+
+  svg.append("g")
+    .attr("class", "legendSequential")
+    .attr("transform", "translate(20,20)");
+
+  var legendSequential = d3.legendColor()
+      .shapeWidth(30)
+      .cells(10)
+      .orient("vertical")
+      .scale(sequentialScale)
+
+  svg.select(".legendSequential")
+    .call(legendSequential);
 
   </script>
 

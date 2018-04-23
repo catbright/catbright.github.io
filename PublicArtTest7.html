@@ -2,19 +2,87 @@
 <html>
   <head>
     <meta charset="utf-8" />
-      <title>
-        Public Art, Cambridge MA
-      </title>
+    <title>
+      Cambridge Public Art Test
+    </title>
 
-  <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-legend/2.25.6/d3-legend.js"></script>
+    <link rel="stylesheet"
+            href="https://fonts.googleapis.com/css?family=Mukta+Mahee">
+      <style>
+        body {
+          font-family: 'Mukta Mahee', sans-serif;
+          font-size: 100px;
+          text-align: center;
+        }
 
-  <link rel="stylesheet"
-          href="https://fonts.googleapis.com/css?family=Mukta+Mahee">
+        p {
+          font-size: 24px;
+          margin: 100px;
+        }
+      </style>
 
-<!--css-->
-  <link href="PublicArtStyle.css" rel="stylesheet">
+    <style>
+      #tooltip {
+        background-color: #999999;
+        border: none;
+        display: none;
+        font-family: 'Mukta Mahee', sans-serif;
+        font-size: 12px;
+        font-color: white;
+        position: absolute;
+        }
+
+      #xAxis {
+        font-family: 'Mukta Mahee', sans-serif;
+        font-size: 15px;
+      }
+    </style>
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style>
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: 'Mukta Mahee', sans-serif;
+    font-color: #ffffff;
+    }
+
+.bg {
+    background-image: url("IMG_6806.JPG");
+    height: 50%;
+    opacity: 0.85;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    }
+
+.caption1 {
+  position: relative;
+  left: 0;
+  top: 10%;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  padding: 10px;
+  font-size: 100px;
+  font-variant: small-caps;
+  }
+
+.caption2 {
+  position: relative;
+  left: 0;
+  top: 0%;
+  width: 100%;
+  text-align: center;
+  color: #ffffff;
+  padding: 10px;
+  font-size: 75px;
+}
+</style>
 
 </head>
 
@@ -23,38 +91,17 @@
 
 <body>
 
-<style>
-  .bg {
-      background-image: url("IMG_7192.JPG");
-      height: 100%;
-      opacity: 0.65;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-size: cover;
-      position: relative;
-      }
-  </style>
-
-<!--title text-->
 <div class="bg">
-  <h2><span class='spacer'>Public Art<span class='spacer'></h2></span>
-  <h3><span class='spacer'>City of Cambridge</span class='spacer'></h3></span>
+  <div class="caption1">Public Art</div>
+  <div class="caption2">Cambridge, MA</div>
 </div>
-
-<h4><span><i>The Librarian Speaks</i> - Liam Gillick, 2009</h4></span>
 
 
 <body id="myBody">
 
-
-<!--Intro quote-->
   <p>"It becomes more apparent each day that we must continuously rejuvenate and generate the arts at the core of society, to ensure a healthy, sustainable, secure, diverse and meaningful civilization."<br>
     - Professor Nathan Felde<br>
      Art + Design, Northeastern University</p>
-
-  <p>Since 1979, the city of Cambridge has funded public art projects
-      through the Percent for Art Ordinance.<br>The projects below are coded
-      by neighborhood and number of materials used.</p>
 
 <svg id="viz">
   <g id="xAxis"></g>
@@ -69,10 +116,8 @@
 
 var axis1 = 'Year';
 
-
-//Load data
 d3.queue()
-  .defer(d3.csv, "ArtDataset4Edit.csv")
+  .defer(d3.csv, "ArtDataset3Edit.csv")
   .awaitAll(function(error, dataArray) {
     var artData = dataArray[0].sort(function(a, b) {
       return a.Year - b.Year;
@@ -113,23 +158,6 @@ var svg = d3.select("#viz")
   .attr("width", window.innerWidth)
   .attr("height", window.innerHeight)
 
-  var tooltip = d3.select("body")
-      .append("div")
-      .style("position", "absolute")
-      .style("z-index", "10")
-      .style("visibility", "hidden")
-      .style("background", "#303030")
-      .style("opacity", 0.9)
-      .style("color", "white")
-      .style("padding", "5px 0")
-      .style("border-radius", "6px");
-
-      d3.select("body")
-        .selectAll("div")
-          .data(artData)
-        .enter().append("div");
-
-
   var nodes = artData.map(function(node, index) {
       return {
         index: index,
@@ -145,18 +173,15 @@ var svg = d3.select("#viz")
       .range([minRadius,maxRadius]);
 
 
-//Circles
 var circles = svg.selectAll("circle")
   .data(artData);
 
-var colorScale = d3.scaleSequential(d3.interpolateRainbow)
-    .domain( [d3.min(artData, function(d){ return d.NeighborhoodNum;}), d3.max(artData,  function(d){ return d.NeighborhoodNum;})] );
+  var colorScale = d3.scaleSequential(d3.interpolateRainbow)
+    .domain( [d3.min(artData, function(d){ return d.Year;}), d3.max(artData,  function(d){ return d.Year;})] );
 
 
   circles.enter().append("circle")
-    .style("fill", function(d) { return colorScale(d.NeighborhoodNum); })
-    .style("opacity", 0.8)
-    .attr("r", 0)
+    .style("fill", function(d) { return colorScale(d.Year); })
     .attr("cx", padding)
     .attr("cy", function(d, i) {
       var myYearsData = artData.filter(function(a) {
@@ -165,16 +190,22 @@ var colorScale = d3.scaleSequential(d3.interpolateRainbow)
       var myIndex = myYearsData.indexOf(d);
       return 475 - 50 * myIndex;
     })
-    .attr("cx", function(d){
-        return xScale(d.Year);
-      })
-      .on("mouseover", function(d){tooltip.text(d.Title); return tooltip.style("visibility", "visible");})
-      .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
-      .on("mouseout", function(){return tooltip.style("visibility", "hidden");})
-    .transition("r")
-    .duration(1500)
     .attr("r", function(d) { return sizeScale(d.MaterialNum)} )
-
+    .on("mouseenter", function(d) {
+      d3.select("#tooltip")
+      .style("display", "block")
+      .style("top", "860px")
+      .style("left", xScale(d.Year) + "px")
+      .text(d.Title);
+    })
+    .on("mouseleave", function(d) {
+      d3.select("#tooltip")
+        .style("display", "none");
+    })
+    .transition().duration(1500)
+      .attr("cx", function(d){
+        return xScale(d.Year);
+      });
 
 
   var xAxis = d3.axisBottom(xScale);
@@ -185,11 +216,8 @@ var colorScale = d3.scaleSequential(d3.interpolateRainbow)
   });
 
 
+
   </script>
-
-  <h5><span>Source:  Cambridge Open Data</h5><span>
-
-
 </body>
 
 </html>
